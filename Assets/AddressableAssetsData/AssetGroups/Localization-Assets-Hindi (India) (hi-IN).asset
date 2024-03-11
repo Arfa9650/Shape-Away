@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Localization-Assets-Hindi (India) (hi-IN)
+  m_EditorClassIdentifier: 
+  m_GroupName: Localization-Assets-Hindi (India) (hi-IN)
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 146d2666e9b03414dacc84a3b5d0bc82
+  m_SerializeEntries:
+  - m_GUID: 3101296504f01d244a68e26f9b895bfc
+    m_Address: "\u091C\u093E\u0930\u0940 \u0930\u0916\u094B"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c150477647fffc74ca67524bed9ee9ca
+    m_Address: "\u0930\u094B\u0915\u093E \u0939\u0941\u0906"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d25a0d89cb7db54daa6bf4bb27ede3a
+    m_Address: "\u0938\u092E\u093E\u092F\u094B\u091C\u0928"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bbcc9373a9bfc3a4dbb5b5441a31a14a
+    m_Address: "\u092A\u0940\u091B\u0947"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 30f540f9f0fa55843a4d3d9e5a53b238
+    m_Address: "\u092C\u093E\u0939\u0930 \u0928\u093F\u0915\u0932\u0928\u093E"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 62a64773eebcacc43814345de300c51a
+    m_Address: "\u0939\u0948\u092A\u094D\u091F\u093F\u0915\u094D\u0938"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: afca36e325b8d3e4a92b81234598c13f
+    m_Address: "\u0938\u0902\u0917\u0940\u0924"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 46a6a84d96513994aa97439ed82e04ba
+    m_Address: "\u092D\u093E\u0937\u093E"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 272b3792c9156e14d89650cb664dd7fb
+    m_Address: "\u0930\u0947\u091F\u093F\u0902\u0917"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4c7ab885a37e72a48a861bca25c76468
+    m_Address: "\u0939\u092E\u0947\u0902 \u0930\u0947\u091F\u093F\u0902\u0917 \u0926\u0947\u0902"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4c284c55c5eb5743adeb2ffebb6b80a
+    m_Address: "\u0905\u0917\u0932\u093E"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7ada7bd1d1ca24f4fbfd7e1f839680b4
+    m_Address: "\u0938\u094D\u0924\u0930 \u092A\u0942\u0930\u093E \u0939\u0941\u0906"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-hi-IN
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 1
+  m_Settings: {fileID: 11400000, guid: da841ef3f5231be4fbbd1f44a3a0e849, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 8b2af8df134198a4aaaac03268847aeb, type: 2}
+    - {fileID: 11400000, guid: cdaf8647b9512644094c89b090150222, type: 2}

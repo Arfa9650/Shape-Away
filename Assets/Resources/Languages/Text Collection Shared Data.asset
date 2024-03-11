@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b11a58205ec3474ca216360e9fa74a8, type: 3}
+  m_Name: Text Collection Shared Data
+  m_EditorClassIdentifier: 
+  m_TableCollectionName: Text Collection
+  m_TableCollectionNameGuidString: 3e7a456692a112b4d8e6d86677921f93
+  m_Entries:
+  - m_Id: 5403715227648
+    m_Key: Shapes
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1793739995926528
+    m_Key: Settings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1787339211198464
+    m_Key: Resume
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1789161057472512
+    m_Key: Paused
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1794413487902720
+    m_Key: Exit
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1011842732032
+    m_Key: Animals
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1795936305467392
+    m_Key: Back
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1796667259408384
+    m_Key: Music
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1796887728803840
+    m_Key: Haptics
+    m_Metadata:
+      m_Items: []
+  - m_Id: 1809854860021760
+    m_Key: Language
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2140834225377280
+    m_Key: Ratings
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2141226204057600
+    m_Key: Rate us
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2890921276788736
+    m_Key: Next
+    m_Metadata:
+      m_Items: []
+  - m_Id: 2899041524830208
+    m_Key: Level Complete
+    m_Metadata:
+      m_Items: []
+  m_Metadata:
+    m_Items:
+    - rid: 1746329668815945750
+    - rid: 4168949065802055690
+  m_KeyGenerator:
+    rid: 1746329668815945744
+  references:
+    version: 2
+    RefIds:
+    - rid: 1746329668815945744
+      type: {class: DistributedUIDGenerator, ns: UnityEngine.Localization.Tables, asm: Unity.Localization}
+      data:
+        m_CustomEpoch: 1709105483371
+    - rid: 1746329668815945750
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 1011842732032
+          m_TableCodes:
+          - en-US
+          - ar
+          - ur-PK
+          - hi-IN
+        - m_KeyId: 5403715227648
+          m_TableCodes:
+          - ur-PK
+          - en-US
+          - ar
+          - hi-IN
+        - m_KeyId: 1787339211198464
+          m_TableCodes:
+          - en-US
+          - ur-PK
+          - hi-IN
+          - ar
+        - m_KeyId: 1793739995926528
+          m_TableCodes:
+          - en-US
+          - ar
+          - ur-PK
+          - hi-IN
+        - m_KeyId: 1794413487902720
+          m_TableCodes:
+          - ar
+          - en-US
+          - ur-PK
+          - hi-IN
+        - m_KeyId: 1795936305467392
+          m_TableCodes:
+          - en-US
+          - ur-PK
+          - hi-IN
+          - ar
+        - m_KeyId: 1796667259408384
+          m_TableCodes:
+          - ur-PK
+          - ar
+          - hi-IN
+          - en-US
+        - m_KeyId: 1796887728803840
+          m_TableCodes:
+          - ur-PK
+          - en-US
+          - ar
+          - hi-IN
+        - m_KeyId: 1809854860021760
+          m_TableCodes:
+          - en-US
+          - ur-PK
+          - hi-IN
+          - ar
+        - m_KeyId: 2140834225377280
+          m_TableCodes:
+          - en-US
+          - ar
+          - ur-PK
+          - hi-IN
+        - m_KeyId: 2141226204057600
+          m_TableCodes:
+          - hi-IN
+          - en-US
+          - ur-PK
+          - ar
+        - m_KeyId: 2890921276788736
+          m_TableCodes:
+          - en-US
+          - ur-PK
+          - ar
+          - hi-IN
+        - m_KeyId: 2899041524830208
+          m_TableCodes:
+          - en-US
+          - ar
+          - ur-PK
+          - hi-IN
+        m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+    - rid: 4168949065802055690
+      type: {class: AssetTypeMetadata, ns: UnityEngine.Localization.Metadata, asm: Unity.Localization}
+      data:
+        m_Entries:
+        - m_KeyId: 1789161057472512
+          m_TableCodes:
+          - ar
+          - en-US
+          - hi-IN
+          - ur-PK
+        m_TypeString: UnityEngine.Texture2D, UnityEngine.CoreModule, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
