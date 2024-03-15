@@ -141,6 +141,12 @@ public class MenuManager : MonoBehaviour
         StartCoroutine(LoadScene(ratings, mainCanvas));
     }
 
+    public void Shop()
+    {
+        DisableOtherButtons();
+        StartCoroutine(LoadScene(3));
+    }
+
     private IEnumerator LoadScene(int index)
     {
         AudioManager.Play(AudioClipNames.Button);

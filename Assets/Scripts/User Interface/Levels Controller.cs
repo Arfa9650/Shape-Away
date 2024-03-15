@@ -10,6 +10,9 @@ public class LevelsController : MonoBehaviour
     [SerializeField]
     RectTransform screens;
 
+    [SerializeField]
+    GameObject transition;
+
     // Define variables for animation
     private Vector3 startPosition;
 
@@ -23,7 +26,11 @@ public class LevelsController : MonoBehaviour
 
     private Vector2 touchStartPos;
 
-    private float swipeThreshold = 5f;
+    private float swipeThreshold = 15f;
+
+    public int numOfItems = 1;
+
+    public int distanceBetweenItem = 2500;
 
     #endregion
 
@@ -69,15 +76,24 @@ public class LevelsController : MonoBehaviour
 
     public void ShapesLevel()
     {
-        StartCoroutine(LoadScene(2));
+        AudioManager.Play(AudioClipNames.Button);
+        StartCoroutine(Transition(2));
+        
+    }
+
+    IEnumerator Transition(int level)
+    {
+        transition.SetActive(true);
+        yield return new WaitForSeconds(1.1f); 
+        SceneManager.LoadScene(level);
     }
 
     public void Next()
     {
-        if (screens.anchoredPosition.x % 2500 == 0 && screens.anchoredPosition.x > -2500)
+        if (screens.anchoredPosition.x % distanceBetweenItem == 0 && screens.anchoredPosition.x > -distanceBetweenItem * numOfItems)
         {
             // Calculate target position
-            targetPosition = screens.anchoredPosition - new Vector2(2500, 0); // Adjust position
+            targetPosition = screens.anchoredPosition - new Vector2(distanceBetweenItem, 0); // Adjust position
 
             // Store current position as the start position
             startPosition = screens.anchoredPosition;
@@ -89,10 +105,10 @@ public class LevelsController : MonoBehaviour
 
     public void Back()
     {
-        if (screens.anchoredPosition.x % 2500 == 0 && screens.anchoredPosition.x < 0)
+        if (screens.anchoredPosition.x % distanceBetweenItem == 0 && screens.anchoredPosition.x < 0)
         {
             // Calculate target position for moving backwards
-            targetPosition = screens.anchoredPosition + new Vector2(2500, 0); // Adjust position
+            targetPosition = screens.anchoredPosition + new Vector2(distanceBetweenItem, 0); // Adjust position
 
             // Store current position as the start position
             startPosition = screens.anchoredPosition;
@@ -110,7 +126,6 @@ public class LevelsController : MonoBehaviour
 
     private IEnumerator LoadScene(int index)
     {
-        AudioManager.Play(AudioClipNames.Button);
         yield return new WaitForSeconds(animTime);
         SceneManager.LoadScene(index);
     }

@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 5f164a96fdc4a1c408c25c57c9c83010
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - greenButton: {fileID: 21300000, guid: 055c09c4d63f4c1478fb1613a212d274, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

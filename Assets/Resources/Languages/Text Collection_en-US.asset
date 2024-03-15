@@ -74,6 +74,14 @@ MonoBehaviour:
     m_Localized: 6435a41f248914543806890ef974b7e1[Level Complete]
     m_Metadata:
       m_Items: []
+  - m_Id: 4410045832286208
+    m_Localized: f3c50e1bdd7ea5c46bae3a88e27d0311[Boy]
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4410402243268608
+    m_Localized: 8dbdea200d2a2ea488447d76deca36cc[Girl]
+    m_Metadata:
+      m_Items: []
   references:
     version: 2
     RefIds: []

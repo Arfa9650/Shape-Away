@@ -8,6 +8,12 @@ public class CharacterSpawner : MonoBehaviour
 
     string characterToSpawn;
 
+    [SerializeField]
+    string path = @"Prefabs\Characters\";
+
+    [SerializeField]
+    Vector2 position = new Vector2(-1.28f, 3.16f);
+
     private void Start()
     {
         if(PlayerPrefs.HasKey("Character"))
@@ -19,6 +25,6 @@ public class CharacterSpawner : MonoBehaviour
             characterToSpawn = defaultCharacter;
         }
 
-        Instantiate(Resources.Load(@"Prefabs\Characters\" + characterToSpawn) as GameObject, new Vector2(-1.28f, 3.16f), Quaternion.identity, transform);
+        Instantiate(Resources.Load(path + characterToSpawn) as GameObject, position, Quaternion.identity, transform);
     }
 }

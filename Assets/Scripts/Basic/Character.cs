@@ -6,11 +6,20 @@ public class Character : MonoBehaviour
 {
     Animator anim;
 
+    private bool gameOver = false;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         EventManager.AddListener(EventNames.FitShape, Success);
         EventManager.AddListener(EventNames.FailToFit, Failed);
+        EventManager.AddListener(EventNames.GameOver, DontTransition);
+    }
+
+    public void DontTransition(int zero)
+    {
+        gameOver = true;
+        anim.SetTrigger("Happy");
     }
 
     public void Success(int num)
@@ -29,9 +38,10 @@ public class Character : MonoBehaviour
 
     public void ResetToDefaultState()
     {
-        anim.ResetTrigger("Fail");
-        anim.ResetTrigger("Success");
-        anim.ResetTrigger("Happy");
-        anim.ResetTrigger("Angry");
+        if (!gameOver)
+        {
+            anim.ResetTrigger("Fail");
+            anim.ResetTrigger("Success");
+        }
     }
 }

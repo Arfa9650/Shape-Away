@@ -89,6 +89,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-ur-PK
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f6f347ba9836b174692be44b894f538c
+    m_Address: "\u0644\u0691\u06A9\u0627"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ur-PK
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e4b4cb80d3c4f5d46b4547fec1c8a751
+    m_Address: "\u0644\u0691\u06A9\u06CC"
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-ur-PK
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: da841ef3f5231be4fbbd1f44a3a0e849, type: 2}
   m_SchemaSet:

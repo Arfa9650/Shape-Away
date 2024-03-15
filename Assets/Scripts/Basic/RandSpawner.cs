@@ -24,7 +24,7 @@ public class RandSpawner : IntEventInvoker
 
     int gridSize = 3; // Assuming a 3x3 grid
     
-    float cellSize = 1.5f; // Distance between cells
+    float cellSize = 1.4f; // Distance between cells
 
     //Difficulty Values
 
@@ -33,6 +33,8 @@ public class RandSpawner : IntEventInvoker
     bool canRotate = false;
 
     bool enableColor = false;
+
+    bool start = true;
 
     #endregion
 
@@ -84,12 +86,13 @@ public class RandSpawner : IntEventInvoker
     {
         if (shapeNum < shapesToSpawn.Count)
         {
-            if (difficulty < 10)
+            if (difficulty < 10 && !start)
             {
                 hand.SetActive(true);
             }
             currentShape = shapesToSpawn[shapeNum];
             Instantiate(shapes[(ShapeName)currentShape], new Vector2(0, -3.9f), Quaternion.identity, transform);
+            start = false;
         }
         else
             hand.SetActive(false);
@@ -103,7 +106,7 @@ public class RandSpawner : IntEventInvoker
             for (int y = 0; y < gridSize; y++)
             {
                 // Calculate cell positions centered around (0,0)
-                Vector3 cellPosition = new Vector3((x - gridSize / 2) * cellSize, (y - gridSize / 2) * cellSize + 0f, 0);
+                Vector3 cellPosition = new Vector3((x - gridSize / 2) * cellSize, (y - gridSize / 2) * 1.55f + 0f, 0);
                 gridPositions.Add(cellPosition);
             }
         }

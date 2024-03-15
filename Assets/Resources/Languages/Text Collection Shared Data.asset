@@ -71,6 +71,14 @@ MonoBehaviour:
     m_Key: Level Complete
     m_Metadata:
       m_Items: []
+  - m_Id: 4410045832286208
+    m_Key: Boy
+    m_Metadata:
+      m_Items: []
+  - m_Id: 4410402243268608
+    m_Key: Girl
+    m_Metadata:
+      m_Items: []
   m_Metadata:
     m_Items:
     - rid: 1746329668815945750
@@ -166,6 +174,18 @@ MonoBehaviour:
           - ar
           - ur-PK
           - hi-IN
+        - m_KeyId: 4410045832286208
+          m_TableCodes:
+          - en-US
+          - ar
+          - ur-PK
+          - hi-IN
+        - m_KeyId: 4410402243268608
+          m_TableCodes:
+          - hi-IN
+          - en-US
+          - ur-PK
+          - ar
         m_TypeString: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
     - rid: 4168949065802055690

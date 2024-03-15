@@ -83,6 +83,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - Locale-en-US
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f3c50e1bdd7ea5c46bae3a88e27d0311
+    m_Address: Boy
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8dbdea200d2a2ea488447d76deca36cc
+    m_Address: Girl
+    m_ReadOnly: 1
+    m_SerializedLabels:
+    - Locale-en-US
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 1
   m_Settings: {fileID: 11400000, guid: da841ef3f5231be4fbbd1f44a3a0e849, type: 2}
   m_SchemaSet:

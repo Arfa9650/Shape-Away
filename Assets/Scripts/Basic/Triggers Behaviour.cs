@@ -8,7 +8,7 @@ public class TriggersBehaviour : IntEventInvoker
 
     bool isOccupied = true;
 
-    bool enableColor = true;
+    bool enableColor = false;
 
     int colorRotation = 0;
 
