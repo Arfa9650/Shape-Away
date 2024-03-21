@@ -46,8 +46,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
-        
-        StartCoroutine(LoadScene(mainCanvas, pauseCanvas, false));
+        mainCanvas.SetActive(false);
+        pauseCanvas.SetActive(true);
     }
     
     public void Resume()
@@ -70,7 +70,8 @@ public class PauseMenu : MonoBehaviour
 
     public void Exit()
     {
-        Debug.Log("Exiting");       
+        Debug.Log("Exiting");
+        AudioManager.FirstTime = true;
         DisableOtherButtons();
         StartCoroutine(LoadScene(0));
     }

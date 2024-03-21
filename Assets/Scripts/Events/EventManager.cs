@@ -11,6 +11,8 @@ public static class EventManager
     static Dictionary<EventNames, List<IntEventInvoker>> invokers = new Dictionary<EventNames, List<IntEventInvoker>>();
     static Dictionary<EventNames, List<UnityAction<int>>> listeners = new Dictionary<EventNames, List<UnityAction<int>>>();
 
+    public static bool initialized = false;
+
     #endregion
 
     #region Methods
@@ -30,6 +32,7 @@ public static class EventManager
                 listeners[name].Clear();
             }
         }
+        initialized = true;
     }
 
     public static void AddInvoker(EventNames eventNames, IntEventInvoker invoker)

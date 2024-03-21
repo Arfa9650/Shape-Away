@@ -86,13 +86,13 @@ public class RandSpawner : IntEventInvoker
     {
         if (shapeNum < shapesToSpawn.Count)
         {
-            if (difficulty < 10 && !start)
+            if (difficulty < 10/* && !start*/) //Condition to satisfy transitions
             {
                 hand.SetActive(true);
             }
             currentShape = shapesToSpawn[shapeNum];
             Instantiate(shapes[(ShapeName)currentShape], new Vector2(0, -3.9f), Quaternion.identity, transform);
-            start = false;
+            //start = false;
         }
         else
             hand.SetActive(false);

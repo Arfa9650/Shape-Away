@@ -77,7 +77,7 @@ public class LevelsController : MonoBehaviour
     public void ShapesLevel()
     {
         AudioManager.Play(AudioClipNames.Button);
-        StartCoroutine(Transition(2));
+        StartCoroutine(LoadScene(2));
         
     }
 

@@ -35,13 +35,16 @@ public class GameManager : IntEventInvoker
 
     float elapsedTime = 0f;
 
+    int difficulty;
+
     #endregion
 
     #region Methods
 
     private void Start()
     {
-        shapesInScene = PlayerPrefs.GetInt("Difficulty", 1);
+        difficulty = PlayerPrefs.GetInt("Difficulty", 1);
+        shapesInScene = difficulty > 9 ? 9 : difficulty;
         if (shapesInScene > 9)
             shapesInScene = 9;
 
@@ -69,8 +72,7 @@ public class GameManager : IntEventInvoker
         if(events >= shapesInScene)
         {
             AudioManager.Play(AudioClipNames.LevelComplete);
-            mainCanvas.SetActive(false);
-            unityEvents[EventNames.GameOver].Invoke(0);
+            //mainCanvas.SetActive(false);
 
             if (PlayerPrefs.HasKey("Difficulty"))
             {
@@ -81,6 +83,8 @@ public class GameManager : IntEventInvoker
             {
                 PlayerPrefs.SetInt("Difficulty", 2);
             }
+
+            unityEvents[EventNames.GameOver].Invoke(PlayerPrefs.GetInt("Difficulty"));
             StartCoroutine(GameOver());
         }
     }
@@ -89,25 +93,42 @@ public class GameManager : IntEventInvoker
     {
         yield return new WaitForSeconds(2.1f);
 
+        int max = PlayerPrefs.GetInt("Maximum", 10);
 
-        AudioManager.audioSource.clip = applause;
-        AudioManager.audioSource.loop = false;
-        AudioManager.audioSource.Play();
-
-        levelComplete.SetActive(true);
+        if (PlayerPrefs.GetInt("Difficulty", 1) < max)
+            SceneManager.LoadScene(2);
+        else
+        {
+            PlayerPrefs.SetInt("Maximum", max * 2);
+            AudioManager.audioSource.clip = applause;
+            AudioManager.audioSource.loop = false;
+            AudioManager.audioSource.Play();
+            mainCanvas.SetActive(false);
+            levelComplete.SetActive(true);
+        }
     }
 
     private IEnumerator LoadScene(int index)
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene(index);
     }
 
     public void Restart()
     {
         AudioManager.Play(AudioClipNames.Button);
-        particles.SetActive(false);
-        StartCoroutine(Transition(2));
+        //particles.SetActive(false);
+        /*if (PlayerPrefs.HasKey("Difficulty"))
+        {
+            int level = PlayerPrefs.GetInt("Difficulty");
+            PlayerPrefs.SetInt("Difficulty", level + 1);
+        }
+        else
+        {
+            PlayerPrefs.SetInt("Difficulty", 2);
+        }*/
+        AudioManager.FirstTime = true;
+        StartCoroutine(LoadScene(2));
     }
 
     IEnumerator Transition(int level)

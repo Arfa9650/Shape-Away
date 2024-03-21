@@ -4,12 +4,14 @@ using UnityEngine;
 
 public static class AudioManager
 {
-    #region
+    #region Fields
 
     static Dictionary<AudioClipNames, AudioClip> sound = new Dictionary<AudioClipNames, AudioClip>();
     public static AudioSource audioSource;
     static bool initialized = false;
     static bool haptics = true;
+
+    static bool firstTime = true;
 
     #endregion
 
@@ -22,6 +24,12 @@ public static class AudioManager
     { 
         get { return haptics; }
         set { haptics = value; }
+    }
+
+    public static bool FirstTime
+    {
+        get { return firstTime; }
+        set { firstTime = value; }
     }
 
     #endregion
