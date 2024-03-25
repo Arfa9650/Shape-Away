@@ -46,6 +46,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        AudioManager.Play(AudioClipNames.Button);
         mainCanvas.SetActive(false);
         pauseCanvas.SetActive(true);
     }
