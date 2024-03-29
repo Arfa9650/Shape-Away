@@ -75,6 +75,13 @@ public class MovableShape : IntEventInvoker
 
     private void FixedUpdate()
     {
+        if(rb == null)
+        {
+            Debug.LogWarning("No Gravity");
+            rb = gameObject.AddComponent<Rigidbody2D>();
+            rb.isKinematic = true;
+        }
+
         if (isPressed && oneTimeVibration)
         {
             DragObject();
@@ -104,9 +111,8 @@ public class MovableShape : IntEventInvoker
     {
         if(isPressed)
             canMerge = true;
-
-        if (!isPressed && collision.CompareTag(gameObject.tag + "Trigger") && canMerge && collision.transform.rotation == transform.rotation
-            && collision.GetComponent<TriggersBehaviour>().Occupied)
+        //Changes = collision name
+        if (!isPressed && (collision.CompareTag(gameObject.tag + "Trigger") || "Duplicate_" + collision.name + "(Clone)" == gameObject.name) && canMerge && collision.transform.rotation == transform.rotation)
         {
             if (oneTimeVibration)
             {
@@ -122,7 +128,7 @@ public class MovableShape : IntEventInvoker
             }
         }
 
-        else if (!isPressed && canMerge && collision.tag.Contains("Trigger") && failOneTime)
+        else if (!isPressed && canMerge && (collision.tag.Contains("Trigger") || !collision.name.Contains("Duplicate")) && failOneTime)
         {
             unityEvents[EventNames.FailToFit].Invoke(0);
             AudioManager.Play(AudioClipNames.Fail);

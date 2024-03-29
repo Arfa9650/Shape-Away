@@ -20,6 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Shop.unity
     guid: 0a06b8ef481a88b4ea11dc3213bb9ac7
+  - enabled: 1
+    path: Assets/_Scenes/Animals Scene.unity
+    guid: 7505e220522be1d459ab63fe8a00a7fa
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 4da5f5bab4b8fce4bbc849df11dc257a, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 095fe7e586904d94aa49ee29d7cbf505, type: 2}

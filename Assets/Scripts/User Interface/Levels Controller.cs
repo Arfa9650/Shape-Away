@@ -81,6 +81,12 @@ public class LevelsController : MonoBehaviour
         
     }
 
+    public void AnimalLevel()
+    {
+        AudioManager.Play(AudioClipNames.Button);
+        StartCoroutine(LoadScene(4));
+    }
+
     IEnumerator Transition(int level)
     {
         transition.SetActive(true);
