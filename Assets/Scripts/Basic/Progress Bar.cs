@@ -11,13 +11,16 @@ public class ProgressBar : IntEventInvoker
     int maximum;
     int current;
 
+    public string difficultyString = "Difficulty";
+    public string maxString = "Maximum";
+
     public bool animOnStart = false;
 
 
     private void Start()
     {
-        current = PlayerPrefs.GetInt("Difficulty", 1);
-        maximum = PlayerPrefs.GetInt("Maximum", 10);
+        current = PlayerPrefs.GetInt(difficultyString, 1);
+        maximum = PlayerPrefs.GetInt(maxString, 10);
         
         if (EventManager.initialized)
         {

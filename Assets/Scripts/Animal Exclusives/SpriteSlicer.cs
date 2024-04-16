@@ -3,9 +3,11 @@ using System.Collections.Generic;
 
 public class SpriteSlicer : MonoBehaviour
 {
-    public Sprite spriteToSlice;
-    public int piecesX = 2; // Number of horizontal pieces
-    public int piecesY = 2; // Number of vertical pieces
+    Sprite spriteToSlice;
+    int piecesX = 1; // Number of horizontal pieces
+    int piecesY = 1; // Number of vertical pieces
+
+    int difficulty = 1;
 
     List<GameObject> pieces = new List<GameObject>();
 
@@ -16,7 +18,35 @@ public class SpriteSlicer : MonoBehaviour
 
     void Start()
     {
+        difficulty = PlayerPrefs.GetInt("Animals", 1);
+
+        while(difficulty > 0)
+        {
+            if(difficulty%2 == 0)
+            {
+                piecesX++;
+            }
+            else
+            {
+                piecesY++;
+            }
+            difficulty--;
+        }
+
+        int rand = Random.Range(0, 4);
+        spriteToSlice = Resources.Load<Sprite>(@"Sprites/Write Sprites/" + rand.ToString());
+
+        if (spriteToSlice == null)
+        {
+            Debug.LogError("Failed to load sprite with index: " + rand);
+        }
+        else
+        {
+            Debug.Log("Loaded sprite successfully: " + spriteToSlice.name);
+        }
+
         SliceSprite(spriteToSlice, piecesX, piecesY);
+
         SpawnPiece(0);
         EventManager.AddListener(EventNames.FitShape, SpawnPiece);
     }
@@ -46,7 +76,7 @@ public class SpriteSlicer : MonoBehaviour
 
                 // Add a BoxCollider2D to the piece
                 BoxCollider2D boxCollider = newGameObject.AddComponent<BoxCollider2D>();
-                boxCollider.size /= 2;
+                boxCollider.size /= 2f;
                 boxCollider.isTrigger = true;
 
                 pieces.Add(newGameObject);

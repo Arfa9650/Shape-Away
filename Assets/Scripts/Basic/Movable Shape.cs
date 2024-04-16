@@ -32,6 +32,8 @@ public class MovableShape : IntEventInvoker
 
     bool failOneTime = true;
 
+    SpriteRenderer sr;
+
     #endregion
 
     #region MonoBehaviour Methods
@@ -47,6 +49,7 @@ public class MovableShape : IntEventInvoker
         difficulty = PlayerPrefs.GetInt("Difficulty", 1);
         DifficultyAdjuster(difficulty);
         rb = GetComponent<Rigidbody2D>();
+        sr = GetComponent<SpriteRenderer>();
         ogPos = transform.position;
 
         if (enableColor)
@@ -124,6 +127,7 @@ public class MovableShape : IntEventInvoker
                 //collision.GetComponent<TriggersBehaviour>().Occupied = false;
                 Destroy(collision.gameObject);
                 gameObject.tag = "Untagged";
+                sr.sortingOrder = -1;
 
             }
         }
