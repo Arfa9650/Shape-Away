@@ -45,8 +45,25 @@ public class AnimalsManager : IntEventInvoker
     {
         difficulty = PlayerPrefs.GetInt("Animals", 1);
         shapesInScene = difficulty > 9 ? 9 : difficulty;
-        if (shapesInScene > 9)
-            shapesInScene = 9;
+        
+        int x = 1;
+        int y = 1;
+        while (shapesInScene > 0)
+        {
+            if (shapesInScene % 2 == 0)
+            {
+                x++;
+            }
+            else
+            {
+                y++;
+            }
+            shapesInScene--;
+        }
+        x = x > 4 ? 4 : x;
+        y = y > 6 ? 6 : y;
+        shapesInScene = x * y;
+        Debug.Log("Shapes = " + shapesInScene);
 
         unityEvents.Add(EventNames.GameOver, new GameOver());
         EventManager.AddInvoker(EventNames.GameOver, this);
@@ -85,6 +102,7 @@ public class AnimalsManager : IntEventInvoker
             }
 
             unityEvents[EventNames.GameOver].Invoke(PlayerPrefs.GetInt("Animals"));
+            hand.SetActive(false);
             StartCoroutine(GameOver());
         }
     }
