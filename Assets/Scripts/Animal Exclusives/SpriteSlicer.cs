@@ -4,10 +4,14 @@ using System.Collections.Generic;
 public class SpriteSlicer : MonoBehaviour
 {
     Sprite spriteToSlice;
+    
+    [SerializeField] GameObject hand;
     int piecesX = 1; // Number of horizontal pieces
     int piecesY = 1; // Number of vertical pieces
 
     int difficulty = 1;
+
+    public static string pieceName;
 
     List<GameObject> pieces = new List<GameObject>();
 
@@ -19,6 +23,7 @@ public class SpriteSlicer : MonoBehaviour
     void Start()
     {
         difficulty = PlayerPrefs.GetInt("Animals", 1);
+        //difficulty = difficulty % 2 == 0 ? difficulty : difficulty - 1;
 
         while(difficulty > 0)
         {
@@ -32,6 +37,8 @@ public class SpriteSlicer : MonoBehaviour
             }
             difficulty--;
         }
+        piecesX = piecesX > 4 ? 4 : piecesX;
+        piecesY = piecesY > 6 ? 6 : piecesY;
 
         int rand = Random.Range(0, 4);
         spriteToSlice = Resources.Load<Sprite>(@"Sprites/Write Sprites/" + rand.ToString());
@@ -76,7 +83,7 @@ public class SpriteSlicer : MonoBehaviour
 
                 // Add a BoxCollider2D to the piece
                 BoxCollider2D boxCollider = newGameObject.AddComponent<BoxCollider2D>();
-                boxCollider.size /= 2f;
+                boxCollider.size *= 0.65f;
                 boxCollider.isTrigger = true;
 
                 pieces.Add(newGameObject);
@@ -121,12 +128,15 @@ public class SpriteSlicer : MonoBehaviour
 
             // Instantiate the selected piece
             GameObject spawnedPiece = Instantiate(pieces[randomIndex], new Vector2(0, -3.9f), Quaternion.identity, transform);
+            pieceName = spawnedPiece.name;
             spawnedPiece.name = "Duplicate_" + spawnedPiece.name;
             spawnedPiece.AddComponent<MovableShape>();
 
 
             // Remove the spawned piece from the list
             pieces.RemoveAt(randomIndex);
+            if(difficulty < 9)
+                hand.SetActive(true);
         }
         else
         {

@@ -86,7 +86,7 @@ public class RandSpawner : IntEventInvoker
     {
         if (shapeNum < shapesToSpawn.Count)
         {
-            if (difficulty < 10/* && !start*/) //Condition to satisfy transitions
+            if (difficulty < 9/* && !start*/) //Condition to satisfy transitions
             {
                 hand.SetActive(true);
             }

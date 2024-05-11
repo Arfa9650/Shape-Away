@@ -25,7 +25,7 @@ public class Puzzle : MonoBehaviour
         {
             sr.color = new Color(0.3f, 0.3f, 0.3f, 1f);
             //ConvertToGrayscale(sr.sprite);
-            sr.sortingOrder = -1;
+            sr.sortingOrder = -2;
             gameObject.AddComponent<Piece>();
         }
         else
@@ -33,6 +33,7 @@ public class Puzzle : MonoBehaviour
             if(TryGetComponent<Piece>(out piece))
             {
                 piece.enabled = false;
+                transform.GetChild(0).gameObject.SetActive(false);
             }
             sr.color = new Color(1f, 1f, 1f, 1f);
             ScaleObjectToFit(gameObject, reference, 0.5f);
