@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class MovableShape : IntEventInvoker
 {
@@ -21,6 +22,10 @@ public class MovableShape : IntEventInvoker
     float speed = 0.1f;
 
     float circularAreaRadius = 0.5f;
+
+    float rotationDuration = 0.5f;
+
+    private float[] allowedRotations = new float[] { 0f, 90f, 180f, 270f };
 
     //Difficulty Values
 
@@ -159,65 +164,30 @@ public class MovableShape : IntEventInvoker
 
     private void RotateObject()
     {
-        if (oneTimeVibration)
+        if (oneTimeVibration && Time.timeScale != 0 && IsRotationAllowed(transform.rotation.eulerAngles.z))
         {
             switch (shape)
             {
                 case ShapeName.Triangle:
-                    transform.Rotate(Vector3.forward, 90f);
+                case ShapeName.Semicircle:
+                case ShapeName.Quadrant:
+                case ShapeName.Diamond:
+                case ShapeName.Trapzoid:
+                case ShapeName.TrapzoidTwo:
+                    StartCoroutine(RotateOverTime(90f));
                     break;
 
                 case ShapeName.Crystal:
-                    if (transform.rotation.z == 0)
-                    {
-                        transform.Rotate(Vector3.forward, 90f);
-                    }
-                    else
-                    {
-                        transform.Rotate(Vector3.back, 90f);
-                    }
-                    break;
-                
                 case ShapeName.CrystalTwo:
-                    if (transform.rotation.z == 0)
-                    {
-                        transform.Rotate(Vector3.forward, 90f);
-                    }
-                    else
-                    {
-                        transform.Rotate(Vector3.back, 90f);
-                    }
-                    break;
-
                 case ShapeName.Hexagon:
-                    if (transform.rotation.z == 0)
+                    if (Mathf.Approximately(transform.rotation.eulerAngles.z, 0))
                     {
-                        transform.Rotate(Vector3.forward, 90f);
+                        StartCoroutine(RotateOverTime(90f));
                     }
                     else
                     {
-                        transform.Rotate(Vector3.back, 90f);
+                        StartCoroutine(RotateOverTime(-90f));
                     }
-                    break;
-
-                case ShapeName.Semicircle:
-                    transform.Rotate(Vector3.forward, 90f);
-                    break;
-
-                case ShapeName.Quadrant:
-                    transform.Rotate(Vector3.forward, 90f);
-                    break;
-
-                case ShapeName.Diamond:
-                    transform.Rotate(Vector3.forward, 90f);
-                    break;
-
-                case ShapeName.Trapzoid:
-                    transform.Rotate(Vector3.forward, 90f);
-                    break;
-
-                case ShapeName.TrapzoidTwo:
-                    transform.Rotate(Vector3.forward, 90f);
                     break;
 
                 default:
@@ -228,7 +198,130 @@ public class MovableShape : IntEventInvoker
         }
     }
 
-    private void DifficultyAdjuster(int localDifficulty)
+    private bool IsRotationAllowed(float currentRotation)
+    {
+        // Normalize the current rotation to the range [0, 360)
+        currentRotation = currentRotation % 360f;
+        if (currentRotation < 0)
+            currentRotation += 360f;
+
+        foreach (float allowedRotation in allowedRotations)
+        {
+            if (Mathf.Approximately(currentRotation, allowedRotation))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private float GetNextAllowedRotation(float currentRotation)
+    {
+        // Normalize the current rotation to one of the allowed rotations
+        currentRotation = Mathf.Round(currentRotation / 90f) * 90f;
+
+        for (int i = 0; i < allowedRotations.Length; i++)
+        {
+            if (Mathf.Approximately(currentRotation, allowedRotations[i]))
+            {
+                // Get the next rotation in the sequence
+                return allowedRotations[(i + 1) % allowedRotations.Length];
+            }
+        }
+
+        // Default to 0 if no match is found (should not happen)
+        return allowedRotations[0];
+    }
+
+    private IEnumerator RotateOverTime(float angle)
+    {
+        Quaternion startRotation = transform.rotation;
+        Quaternion endRotation = startRotation * Quaternion.Euler(Vector3.forward * angle);
+        float elapsedTime = 0f;
+
+        while (elapsedTime < rotationDuration)
+        {
+            transform.rotation = Quaternion.Slerp(startRotation, endRotation, elapsedTime / rotationDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // Ensure the final rotation is set at the end
+        transform.rotation = endRotation;
+    }
+
+/*private void RotateObject()
+{
+    if (oneTimeVibration && Time.timeScale != 0)
+    {
+        switch (shape)
+        {
+            case ShapeName.Triangle:
+                transform.Rotate(Vector3.forward, 90f);
+                break;
+
+            case ShapeName.Crystal:
+                if (transform.rotation.z == 0)
+                {
+                    transform.Rotate(Vector3.forward, 90f);
+                }
+                else
+                {
+                    transform.Rotate(Vector3.back, 90f);
+                }
+                break;
+
+            case ShapeName.CrystalTwo:
+                if (transform.rotation.z == 0)
+                {
+                    transform.Rotate(Vector3.forward, 90f);
+                }
+                else
+                {
+                    transform.Rotate(Vector3.back, 90f);
+                }
+                break;
+
+            case ShapeName.Hexagon:
+                if (transform.rotation.z == 0)
+                {
+                    transform.Rotate(Vector3.forward, 90f);
+                }
+                else
+                {
+                    transform.Rotate(Vector3.back, 90f);
+                }
+                break;
+
+            case ShapeName.Semicircle:
+                transform.Rotate(Vector3.forward, 90f);
+                break;
+
+            case ShapeName.Quadrant:
+                transform.Rotate(Vector3.forward, 90f);
+                break;
+
+            case ShapeName.Diamond:
+                transform.Rotate(Vector3.forward, 90f);
+                break;
+
+            case ShapeName.Trapzoid:
+                transform.Rotate(Vector3.forward, 90f);
+                break;
+
+            case ShapeName.TrapzoidTwo:
+                transform.Rotate(Vector3.forward, 90f);
+                break;
+
+            default:
+                // Handle unexpected shape types
+                Debug.LogWarning("Unknown shape type: " + shape);
+                break;
+        }
+    }
+}*/
+
+private void DifficultyAdjuster(int localDifficulty)
     {
         switch(localDifficulty)
         {
@@ -236,7 +329,7 @@ public class MovableShape : IntEventInvoker
                 //nothing for now
                 break;
 
-            case >3:
+            case >2:
                 canRotate = true;
                 break;
         }

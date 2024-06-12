@@ -77,7 +77,14 @@ public class RandSpawner : IntEventInvoker
         triggers.Add(ShapeName.Trapzoid, Resources.Load(@"Prefabs\Shapes\Trapzoid Trigger") as GameObject);
         triggers.Add(ShapeName.TrapzoidTwo, Resources.Load(@"Prefabs\Shapes\Trapzoid Two Trigger") as GameObject);
 
-        SpawnShapes(difficulty <= 9 ? difficulty : 9);
+        int numOfShapes = 0;
+        if (difficulty < 3)
+            numOfShapes = difficulty;
+        else
+            numOfShapes = difficulty - 2;
+            
+
+        SpawnShapes(numOfShapes <= 9 ? numOfShapes : 9);
         SpawnShape(shapeNum);
         EventManager.AddListener(EventNames.FitShape, SpawnShape);
     }
@@ -86,7 +93,7 @@ public class RandSpawner : IntEventInvoker
     {
         if (shapeNum < shapesToSpawn.Count)
         {
-            if (difficulty < 9/* && !start*/) //Condition to satisfy transitions
+            if (difficulty < 6/* && !start*/) //Condition to satisfy transitions
             {
                 hand.SetActive(true);
             }
@@ -143,6 +150,10 @@ public class RandSpawner : IntEventInvoker
     void InstantiateTriggerAtPosition(Vector3 position)
     {
         int rand = Random.Range(0, triggers.Count); 
+        if(difficulty == 3)
+        {
+            rand = 2;
+        }
 
         int rotateIn = 1;
         switch((ShapeName)rand)
@@ -176,7 +187,7 @@ public class RandSpawner : IntEventInvoker
                 break;
         }
 
-        Instantiate(triggers[(ShapeName)rand], position, canRotate ? Quaternion.Euler(0, 0, rotations[Random.Range(0, rotateIn)]) : Quaternion.identity, transform);
+        Instantiate(triggers[(ShapeName)rand], position, canRotate ? Quaternion.Euler(0, 0, difficulty != 3 ? rotations[Random.Range(0, rotateIn)] : rotations[2]) : Quaternion.identity, transform);
         shapesToSpawn.Add(rand);
     }
 
@@ -188,7 +199,7 @@ public class RandSpawner : IntEventInvoker
                 //nothing for now
                 break;
 
-            case >3:
+            case >2:
                 canRotate = true;
                 break;
         }

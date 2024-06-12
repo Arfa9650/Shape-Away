@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : IntEventInvoker
 {
@@ -17,6 +18,9 @@ public class GameManager : IntEventInvoker
     GameObject levelComplete;
 
     [SerializeField]
+    GameObject rotateDemoCanvas;
+
+    [SerializeField]
     AudioClip applause;
 
     [SerializeField]
@@ -24,6 +28,9 @@ public class GameManager : IntEventInvoker
 
     [SerializeField]
     GameObject particles;
+
+    [SerializeField]
+    Button settingsButton;
 
     int shapesInScene;
 
@@ -44,7 +51,14 @@ public class GameManager : IntEventInvoker
     private void Start()
     {
         difficulty = PlayerPrefs.GetInt("Difficulty", 1);
-        shapesInScene = difficulty > 9 ? 9 : difficulty;
+
+        int numOfShapes = 0;
+        if (difficulty < 3)
+            numOfShapes = difficulty;
+        else
+            numOfShapes = difficulty - 2;
+
+        shapesInScene = numOfShapes > 9 ? 9 : numOfShapes;
         if (shapesInScene > 9)
             shapesInScene = 9;
 
@@ -52,6 +66,13 @@ public class GameManager : IntEventInvoker
         EventManager.AddInvoker(EventNames.GameOver, this);
 
         EventManager.AddListener(EventNames.FitShape, AddEvent);
+
+        if(difficulty == 3)
+        {
+            mainCanvas.SetActive(false);
+            rotateDemoCanvas.SetActive(true);
+            Time.timeScale = 0;
+        }
     }
 
     private void Update()
@@ -84,6 +105,7 @@ public class GameManager : IntEventInvoker
                 PlayerPrefs.SetInt("Difficulty", 2);
             }
 
+            settingsButton.interactable = false;
             unityEvents[EventNames.GameOver].Invoke(PlayerPrefs.GetInt("Difficulty"));
             StartCoroutine(GameOver());
         }
@@ -116,6 +138,7 @@ public class GameManager : IntEventInvoker
 
     public void Restart()
     {
+        
         AudioManager.Play(AudioClipNames.Button);
         //particles.SetActive(false);
         /*if (PlayerPrefs.HasKey("Difficulty"))
@@ -128,7 +151,15 @@ public class GameManager : IntEventInvoker
             PlayerPrefs.SetInt("Difficulty", 2);
         }*/
         AudioManager.FirstTime = true;
+        AudioManager.audioSource.loop = true;
         StartCoroutine(LoadScene(2));
+    }
+
+    public void DeactivateDemo()
+    {
+        mainCanvas.SetActive(true);
+        rotateDemoCanvas.SetActive(false);
+        Time.timeScale = 1;
     }
 
     IEnumerator Transition(int level)
