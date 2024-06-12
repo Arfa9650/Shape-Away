@@ -13,6 +13,12 @@ public class LevelsController : MonoBehaviour
     [SerializeField]
     GameObject transition;
 
+    [SerializeField]
+    GameObject nextButton;
+
+    [SerializeField]
+    GameObject backButton;
+
     // Define variables for animation
     private Vector3 startPosition;
 
@@ -32,9 +38,31 @@ public class LevelsController : MonoBehaviour
 
     public int distanceBetweenItem = 2500;
 
+    public bool syncToTheCurrent = false;
+
     #endregion
 
     #region Methods
+
+    private void Start()
+    {
+        if(syncToTheCurrent)
+        {
+            string current = PlayerPrefs.GetString("Character", "Boy");
+            
+            switch (current)
+            {
+                case "Boy":
+                    screens.anchoredPosition -= new Vector2(distanceBetweenItem * 0, 0); ;
+                    break;
+
+                case "Girl":
+                    screens.anchoredPosition -= new Vector2(distanceBetweenItem * 1, 0);
+                    break;
+            }
+        }
+
+    }
 
     void Update()
     {
@@ -72,6 +100,20 @@ public class LevelsController : MonoBehaviour
                 }
             }
         }
+
+        if (screens.anchoredPosition.x <= -distanceBetweenItem * numOfItems)
+        {
+            nextButton.SetActive(false);
+        }
+        else
+            nextButton.SetActive(true);
+
+        if (screens.anchoredPosition.x < 0)
+        {
+            backButton.SetActive(true);
+        }
+        else
+            backButton.SetActive(false);
     }
 
     public void ShapesLevel()
@@ -107,6 +149,7 @@ public class LevelsController : MonoBehaviour
             // Start the animation
             StartCoroutine(MoveUIObject());
         }
+
     }
 
     public void Back()
@@ -122,6 +165,7 @@ public class LevelsController : MonoBehaviour
             // Start the animation
             StartCoroutine(MoveUIObject());
         }
+
     }
 
     public void Menu()

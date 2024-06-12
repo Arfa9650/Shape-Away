@@ -40,7 +40,7 @@ public class SpriteSlicer : MonoBehaviour
         piecesX = piecesX > 4 ? 4 : piecesX;
         piecesY = piecesY > 6 ? 6 : piecesY;
 
-        int rand = Random.Range(0, 4);
+        int rand = Random.Range(0, 9);
         spriteToSlice = Resources.Load<Sprite>(@"Sprites/Write Sprites/" + rand.ToString());
 
         if (spriteToSlice == null)

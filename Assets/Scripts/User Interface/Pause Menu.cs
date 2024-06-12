@@ -72,6 +72,7 @@ public class PauseMenu : MonoBehaviour
     public void Exit()
     {
         Debug.Log("Exiting");
+        AudioManager.audioSource.loop = true;
         AudioManager.FirstTime = true;
         DisableOtherButtons();
         StartCoroutine(LoadScene(0));

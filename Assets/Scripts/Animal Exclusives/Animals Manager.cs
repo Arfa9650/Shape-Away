@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class AnimalsManager : IntEventInvoker
 {
@@ -15,6 +16,9 @@ public class AnimalsManager : IntEventInvoker
 
     [SerializeField]
     GameObject levelComplete;
+
+    [SerializeField]
+    Button settingsButton;
 
     [SerializeField]
     AudioClip applause;
@@ -103,6 +107,7 @@ public class AnimalsManager : IntEventInvoker
 
             unityEvents[EventNames.GameOver].Invoke(PlayerPrefs.GetInt("Animals"));
             hand.SetActive(false);
+            settingsButton.interactable = false;
             StartCoroutine(GameOver());
         }
     }

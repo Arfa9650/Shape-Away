@@ -1481,8 +1481,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   screens: {fileID: 1765452481}
+  transition: {fileID: 0}
+  nextButton: {fileID: 257098801}
+  backButton: {fileID: 552980775}
   numOfItems: 1
   distanceBetweenItem: 3000
+  syncToTheCurrent: 1
 --- !u!114 &831123380
 MonoBehaviour:
   m_ObjectHideFlags: 0
