@@ -8,11 +8,23 @@ using GoogleMobileAds.Api;
 public class Banner : MonoBehaviour
 {
 
+<<<<<<< HEAD
+    // Editor and development builds always serve Google's test ads, so debugging
+    // never generates live impressions. Release builds use the real unit, which is
+    // read from AdUnits so the ID is not hardcoded here.
+    #if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private string _adUnitId = "ca-app-pub-3940256099942544/6300978111";
+    #elif UNITY_ANDROID
+    private string _adUnitId = AdUnits.AndroidBanner;
+    #elif UNITY_IPHONE
+    private string _adUnitId = AdUnits.IosBanner;
+=======
     // These ad units are configured to always serve test ads.
     #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-7418823270776132/8450806245";
     #elif UNITY_IPHONE
     private string _adUnitId = "ca-app-pub-3940256099942544/2934735716";
+>>>>>>> e34c3daa72f96a1c593e0133c322be6c654cea16
     #else
     private string _adUnitId = "unused";
     #endif

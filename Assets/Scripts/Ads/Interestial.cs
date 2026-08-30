@@ -11,6 +11,19 @@ public class Interestial : MonoBehaviour
     private float adInterval = 120f; // Time interval for showing ads in seconds
     private float timer = 0f;
 
+<<<<<<< HEAD
+    // Editor and development builds always serve Google's test ads, so debugging
+    // never generates live impressions. Release builds use the real unit, which is
+    // read from AdUnits so the ID is not hardcoded here.
+    #if UNITY_EDITOR || DEVELOPMENT_BUILD
+    private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
+    #elif UNITY_ANDROID
+    private string _adUnitId = AdUnits.AndroidInterstitial;
+    #elif UNITY_IPHONE
+    private string _adUnitId = AdUnits.IosInterstitial;
+    #else
+    private string _adUnitId = "unused";
+=======
     // These ad units are configured to always serve test ads.
     #if UNITY_ANDROID
     private string _adUnitId = "ca-app-pub-7418823270776132/4068708106";
@@ -18,6 +31,7 @@ public class Interestial : MonoBehaviour
      private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
     #else
       private string _adUnitId = "unused";
+>>>>>>> e34c3daa72f96a1c593e0133c322be6c654cea16
     #endif
 
     private InterstitialAd _interstitialAd;
